@@ -9,15 +9,9 @@ type Props = {
   tabs: Tab[];
   // ID da aba selecionada atualmente (vem da URL via useParams)
   selectedTabId: string;
-  // Callback chamado quando o usuário clica em uma aba diferente
-  onTabSelected: (tab: Tab) => void;
 };
 
-export const Tabs: React.FC<Props> = ({
-  tabs,
-  selectedTabId,
-  onTabSelected,
-}) => {
+export const Tabs: React.FC<Props> = ({ tabs, selectedTabId }) => {
   // Busca a aba correspondente ao selectedTabId
   // Se não encontrar (ID inválido ou ausente), selectedTab será undefined
   const selectedTab = tabs.find(tab => tab.id === selectedTabId);
@@ -34,17 +28,7 @@ export const Tabs: React.FC<Props> = ({
               className={tab.id === selectedTabId ? 'is-active' : ''}
             >
               {/* Link atualiza a URL para /tabs/{id} sem recarregar a página */}
-              <Link
-                to={`/tabs/${tab.id}`}
-                onClick={() => {
-                  // Só dispara o callback se a aba clicada for diferente da atual
-                  if (tab.id !== selectedTabId) {
-                    onTabSelected(tab);
-                  }
-                }}
-              >
-                {tab.title}
-              </Link>
+              <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
             </li>
           ))}
         </ul>

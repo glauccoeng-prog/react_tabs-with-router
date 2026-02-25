@@ -23,9 +23,8 @@ export const TabsPage = () => {
        * Componente Tabs reutilizável e stateless:
        * - tabs: dados das abas
        * - selectedTabId: vem da URL para manter o estado na URL
-       * - onTabSelected: callback (navegação já é feita pelo Link interno)
        */}
-      <Tabs tabs={tabs} selectedTabId={tabId} onTabSelected={() => {}} />
+      <Tabs tabs={tabs} selectedTabId={tabId} />
     </>
   );
 };
